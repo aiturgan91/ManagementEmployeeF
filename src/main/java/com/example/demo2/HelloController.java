@@ -1,4 +1,5 @@
 package com.example.demo2;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,8 +22,6 @@ public class HelloController {
     private RadioButton rbContractor;
 
     @FXML
-    private TextField textId;
-    @FXML
     private TextField textName;
     @FXML
     private TextField textSurname;
@@ -43,47 +42,44 @@ public class HelloController {
 
     @FXML
     void onAddClick(ActionEvent event) {
+        Employee newEmployee = null;
         if (rbPermanent.isSelected()) {
-            Permanent permanent = new Permanent();
-            permanent.setName(textName.getText());
-            permanent.setSurname(textSurname.getText());
-            permanent.setPhonenumber(Integer.parseInt(textPhonenumber.getText()));
-            permanent.setPosition(textPosition.getText());
-            permanent.setType(Employeetype.PERMANENT);
-            emp.add(permanent);
+            newEmployee = new Permanent();
+        } else if (rbPartTime.isSelected()) {
+            newEmployee = new PartTime();
+        } else if (rbContractor.isSelected()) {
+            newEmployee = new Contractor();
         }
-        else if (rbPartTime.isSelected()) {
-            PartTime partTime = new PartTime();
-            partTime.setName(textName.getText());
-            partTime.setSurname(textSurname.getText());
-            partTime.setPhonenumber(Integer.parseInt(textPhonenumber.getText()));
-            partTime.setPosition(textPosition.getText());
-            partTime.setType(Employeetype.PARTTIME);
-            emp.add(partTime);
-        }
-        else if (rbContractor.isSelected()) {
-            Contractor contractor = new Contractor();
-            contractor.setName(textName.getText());
-            contractor.setSurname(textSurname.getText());
-            contractor.setPhonenumber(Integer.parseInt(textPhonenumber.getText()));
-            contractor.setPosition(textPosition.getText());
-            contractor.setType(Employeetype.CONTRACTOR);
-            emp.add(contractor);
+
+        if (newEmployee != null) {
+            newEmployee.setName(textName.getText());
+            newEmployee.setSurname(textSurname.getText());
+            newEmployee.setPhonenumber(Integer.parseInt(textPhonenumber.getText()));
+            newEmployee.setPosition(textPosition.getText());
+            emp.add(newEmployee);
+
+            textName.clear();
+            textSurname.clear();
+            textPhonenumber.clear();
+            textPosition.clear();
+        } else {
+            System.out.println("Please select an employee type.");
         }
     }
 
     @FXML
-    private Label label;
-
-    @FXML
-    protected void onListClicked() {
+    protected void onListClicked(MouseEvent event, java.awt.Label label) {
         int id = listView.getSelectionModel().getSelectedIndex();
-        label.setText(emp.get(id).toString());
+        if (id >= 0) {
+            label.setText(emp.get(id).toString());
+        }
     }
 
     @FXML
     private void onRemoveClick() {
         int id = listView.getSelectionModel().getSelectedIndex();
-        emp.remove(id);
+        if (id >= 0) {
+            emp.remove(id);
+        }
     }
 }
