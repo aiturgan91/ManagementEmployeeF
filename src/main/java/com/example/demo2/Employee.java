@@ -5,12 +5,16 @@ public class Employee {
     protected int id;
     protected String name;
     protected String surname;
-    protected int phonenumber;
+    protected String phonenumber;
     protected String position;
+
+    protected Double salary;
+
+
 
     public Employee() {}
 
-    public Employee(Employeetype type, int id, String name, String surname, int phonenumber, String position) {
+    public Employee(Employeetype type, int id, String name, String surname, String phonenumber, String position) {
         this.type = type;
         this.id = id;
         this.name = name;
@@ -51,11 +55,11 @@ public class Employee {
         this.surname = surname;
     }
 
-    public int getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(int phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 
@@ -65,5 +69,13 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }

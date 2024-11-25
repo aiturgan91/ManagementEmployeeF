@@ -8,10 +8,9 @@ public class DataBase {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/university";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "postgres";
+    private static final String PASSWORD = "1359";
 
     private static Connection conn;
-
 
     public static Connection connect() throws SQLException {
         if (conn == null || conn.isClosed()) {
@@ -21,12 +20,12 @@ public class DataBase {
     }
 
     public static void addEmployee(Employee employee) throws SQLException {
-        String sql = "INSERT INTO employees (name, surname, position, phonenumber, type, salary, active) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO employees (name, surname, position, phonenumber, type) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connect().prepareStatement(sql)) {
             stmt.setString(1, employee.getName());
             stmt.setString(2, employee.getSurname());
             stmt.setString(3, employee.getPosition());
-            stmt.setInt(4, employee.getPhonenumber());
+            stmt.setString(4, employee.getPhonenumber());
             stmt.setString(5, employee.getType().toString());
              stmt.executeUpdate();
         }
@@ -45,7 +44,7 @@ public class DataBase {
                 employee.setName(rs.getString("name"));
                 employee.setSurname(rs.getString("surname"));
                 employee.setPosition(rs.getString("position"));
-                employee.setPhonenumber(rs.getInt("phonenumber"));
+                employee.setPhonenumber(rs.getString("phonenumber"));
                 employee.setType(Employeetype.valueOf(rs.getString("type")));
             }
         }
@@ -67,7 +66,7 @@ public class DataBase {
                     employee.setName(rs.getString("name"));
                     employee.setSurname(rs.getString("surname"));
                     employee.setPosition(rs.getString("position"));
-                    employee.setPhonenumber(rs.getInt("phonenumber"));
+                    employee.setPhonenumber(rs.getString("phonenumber"));
                     employee.setType(Employeetype.valueOf(rs.getString("type")));
                     }
             }
@@ -82,7 +81,7 @@ public class DataBase {
             stmt.setString(1, employee.getName());
             stmt.setString(2, employee.getSurname());
             stmt.setString(3, employee.getPosition());
-            stmt.setInt(4, employee.getPhonenumber());
+            stmt.setString(4, employee.getPhonenumber());
             stmt.setString(5, employee.getType().toString());
             stmt.setInt(8, employee.getId());
             stmt.executeUpdate();

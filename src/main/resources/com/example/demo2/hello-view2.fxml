@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.HelloController">
     <children>
-        <ListView fx:id="listView" layoutX="293.0" layoutY="29.0" onMouseClicked="#onListClicked" prefHeight="402.0" prefWidth="280.0" style="-fx-background-color: #d4e8fa;" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0" />
+        <ListView fx:id="listView" layoutX="293.0" layoutY="29.0" prefHeight="402.0" prefWidth="280.0" style="-fx-background-color: #d4e8fa;" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0" />
 
 
         <RadioButton fx:id="rbPermanent" layoutX="35.0" layoutY="34.0" mnemonicParsing="false" selected="true" style="-fx-background-color: #72ed93;" text="Permanent">
@@ -32,5 +32,6 @@
       <TextField fx:id="textPosition" layoutX="118.0" layoutY="255.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #afe4fa;" />
       <Label layoutX="3.0" layoutY="230.0" style="-fx-background-color: #f58138;" text="Phone number" />
       <Label layoutX="25.0" layoutY="260.0" style="-fx-background-color: #f58138;" text="Position" />
+      <Button layoutX="107.0" layoutY="353.0" mnemonicParsing="false" onAction="#buttonClick" text="Button" />
     </children>
 </AnchorPane>
