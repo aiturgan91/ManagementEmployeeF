@@ -768,7 +768,7 @@ public class dashboardController implements Initializable {
 
     public void salarySelect() {
 
-        employeeData employeeD = salary_tableView.getSelectionModel().getSelectedItem();
+        EmployeeData employeeD = salary_tableView.getSelectionModel().getSelectedItem();
         int num = salary_tableView.getSelectionModel().getSelectedIndex();
 
         if ((num - 1) < -1) {
