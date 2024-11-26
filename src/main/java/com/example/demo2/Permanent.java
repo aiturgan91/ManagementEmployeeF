@@ -13,4 +13,5 @@ public class Permanent extends Employee {
                 ", salary=" + salary +
                 '}';
     }
+
 }
